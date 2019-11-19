@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3641921809996287654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3883221457346061001}
+  - component: {fileID: 47449062715381576}
+  m_Layer: 0
+  m_Name: ItemsDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3883221457346061001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641921809996287654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 523.8193, y: 593.7582, z: -1492.9216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47449062715381576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641921809996287654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa805e18d22602489af195d3ff01d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - name: Book
+    hint: 1 Left
+    tagID: 0A353930303435323138380D
+    price: 50
+    category: 1
+    icon: {fileID: 21300000, guid: 1c8fd0aa0e268eb47ab46c4f8530c8a1, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Backpack
+    hint: Blue color on discount
+    tagID: 0A353830303541313337420D
+    price: 80
+    category: 0
+    icon: {fileID: 21300000, guid: a17e2bcc8c915be4f805f781f9c3edb1, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Battery
+    hint: 20 years guarantee
+    tagID: 0A353930303435314530340D
+    price: 8
+    category: 0
+    icon: {fileID: 21300000, guid: f3216e78c534ab84b8bf0ace24834938, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Carrot
+    hint: Get 2 for the price of 1
+    tagID: 0A353930303435343436410D
+    price: 1
+    category: 1
+    icon: {fileID: 21300000, guid: 930189b1c8a397d4ab6c1260e0974fab, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Chocolate
+    hint: 50% less sugar
+    tagID: 0A353930303433334338410D
+    price: 3
+    category: 1
+    icon: {fileID: 21300000, guid: d7289ef0f06f2d944b5d19fcbf62984e, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Cup
+    hint: Limite edition design
+    tagID: 0A353930303435333844320D
+    price: 8
+    category: 2
+    icon: {fileID: 21300000, guid: 023666f23b06a0d479fa8964cfcf3cd9, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Diamond
+    hint: Sale only on rings
+    tagID: 0A353930303433334144380D
+    price: 1200
+    category: 2
+    icon: {fileID: 21300000, guid: 8072a570ace957d41b4be28e53dc942d, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Gloves
+    hint: 'Includes a wrench '
+    tagID: 0A353930303435344334360D
+    price: 11
+    category: 0
+    icon: {fileID: 21300000, guid: 8c2b137bdda162a41abad4440c40364b, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Mouse
+    hint: Comes with bluetooth adapter
+    tagID: 0A353930303435343644310D
+    price: 55
+    category: 0
+    icon: {fileID: 21300000, guid: 890d85d3b7a2030449102481a8cdb507, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Pen
+    hint: Refillable
+    tagID: 0A353930303435323938420D
+    price: 6
+    category: 2
+    icon: {fileID: 21300000, guid: c4024162b5d8e954ea52294e7f614505, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Shoes
+    hint: Waterproof available
+    tagID: 0A353930303435333631340D
+    price: 90
+    category: 1
+    icon: {fileID: 21300000, guid: e12b5c21b39ffeb4b8e866b5f7194c97, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: T-Shirt
+    hint: Custom logos availables
+    tagID: 0A353930303435364142360D
+    price: 22
+    category: 2
+    icon: {fileID: 21300000, guid: acda49ba1506f104b8f96637bb343e56, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 1
+    isListedOnTV: 1
+    appearsOnCheckout: 1
+    isKey: 0
+  - name: Coffe Machine
+    hint: Programmers can't live without it
+    tagID: 0A353930303435343038430D
+    price: 80
+    category: 0
+    icon: {fileID: 21300000, guid: ed2ba5beed5971645aef7bf5387919d6, type: 3}
+    backgroundColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
+    isOnSilluetePuzzle: 0
+    isListedOnTV: 0
+    appearsOnCheckout: 1
+    isKey: 1
