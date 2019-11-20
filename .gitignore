@@ -1,4 +1,9 @@
 eBay\Library\
 eBay/Library/
 eBay/Library/*
+eBay/Library/**
 eBay\Library\*
+eBay/Library/shadercompiler-UnityShaderCompiler.exe0.log
+eBay/Temp/UnityLockfile
+eBay/Temp/*
+eBay/Temp/**
