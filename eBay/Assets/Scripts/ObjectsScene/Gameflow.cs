@@ -25,6 +25,10 @@ public class Gameflow : MonoBehaviour
     public AudioClip MUSIC_15MIN;
     public AudioClip MUSIC_10MIN;
 
+    [Header("Videos")]
+    public VideoPlayer[] videoPlayers_idles;
+    public UnityEngine.Video.VideoClip idleVideo;
+
     Item[] Items;
 
     private void Start()
@@ -35,7 +39,20 @@ public class Gameflow : MonoBehaviour
         UDP.onMessageReceived = UDP_COMMAND;
         debugCanvas.gameObject.SetActive(usingDebugCanvas);
         if (canvases != null && canvases.Length > 0 && canvases[0] != null) { canvases[0].gameObject.SetActive(!usingDebugCanvas); }
+        SetIdelVideoVisibleState(true);
         Setup();
+    }
+
+    public void SetIdelVideoVisibleState(bool isVisible)
+    {
+        if (videoPlayers_idles != null && videoPlayers_idles.Length > 0)
+        {
+            for (int i = 0; i < videoPlayers_idles.Length; i++)
+            {
+                if (isVisible && !videoPlayers_idles[i].IsPlaying) { videoPlayers_idles[i].PlayVideo(idleVideo, true, null); }
+                else if (!isVisible) { videoPlayers_idles[i].Close(); }
+            }
+        }
     }
 
     void Setup(int itemCount = -1)
@@ -117,6 +134,7 @@ public class Gameflow : MonoBehaviour
     void StartGame()
     {
         GAME.StartGame();
+        SetIdelVideoVisibleState(false);
         Audio.PlayMusic(GAME.duration < 900 ? MUSIC_10MIN : MUSIC_15MIN);
     }
 

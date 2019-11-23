@@ -65,7 +65,7 @@ public class Gameflow_Lobby : MonoBehaviour
         {
             lastItemScanned = false;
             Setup(SettingsScreen.GetSettings_ItemCount());
-            videoPlayer_TV.PlayVideo(introVideo,false,null,false, ()=> videoPlayer_TV.PlayVideo(GetIntroVideo()));
+            videoPlayer_TV.PlayVideo(introVideo, false, null, false, () => this.ActionAfterFrameDelay(1, () => videoPlayer_TV.PlayVideo(GetIntroVideo())));
             GAME.StartGame();
             GAME.timer.OnTimerEnds = LoseGame;
             UDP.Write(GAME.UDP_SetGameTimer + ((int)SettingsScreen.GetSettings_TimerDuration()).ToString());
