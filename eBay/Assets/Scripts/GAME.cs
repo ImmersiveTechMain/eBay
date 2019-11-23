@@ -13,6 +13,7 @@ public static class GAME
     public static string UDP_GameLost = "GAME_LOST";
     public static string UDP_GameStart = "GAME_START";
     public static string UDP_GameReset = "GAME_RESET";
+    public static string UDP_SetGameTimer = "SET_GAME_TIMER_"; // SET_GAME_TIMER_X  where X is seconds
 
     public static Timer timer;
     public static float duration = 600;
@@ -49,7 +50,7 @@ public static class GAME
         OnGameStarted = delegate () { };
         gameHasStarted = false;
         gameHasEnded = false;
-        if (timer != null) { timer.OnTimerEnds = () => { }; timer.Stop(); timer = null; }
+        if (timer != null) { timer.OnTimerEnds = () => { }; timer.OnTick = delegate () { }; timer.Stop(); timer = null; }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

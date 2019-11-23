@@ -54,15 +54,21 @@ public class Bill : MonoBehaviour
         {
             for (int i = 0; i < itemRows.Count; i++)
             {
-                if (itemRows[i].item.tagID == item.tagID)
+                for (int t = 0; t < itemRows[i].item.tagID.Length; t++)
                 {
-                    isNewItem = false;
-                    if (itemRows[i].amount < maxAmount)
+                    for (int it = 0; it < item.tagID.Length; it++)
                     {
-                        itemRows[i].amount++;
+                        if (itemRows[i].item.tagID[t] == item.tagID[it])
+                        {
+                            isNewItem = false;
+                            if (itemRows[i].amount < maxAmount)
+                            {
+                                itemRows[i].amount++;
+                            }
+                            Refresh();
+                            return;
+                        }
                     }
-                    Refresh();
-                    return;
                 }
             }
         }

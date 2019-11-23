@@ -20,10 +20,11 @@ public class Gameflow_Lobby : MonoBehaviour
     public Gameflow_Selfcheckout Selfcheckout;
 
     [Header("Videos")]
-    public IntroVideo[] introVideos;
+    public VideoClip introVideo;
+    public IntroVideo[] introVideos_ItemCountRelated;
     public VideoClip allScannedVideo;
-    public VideoClip winVideo;
     public VideoClip loseVideo;
+    public VideoClip winVideo;
 
     [System.Serializable]
     public struct IntroVideo
@@ -34,10 +35,10 @@ public class Gameflow_Lobby : MonoBehaviour
 
     public VideoClip GetIntroVideo()
     {
-        if (introVideos == null || introVideos.Length <= 0) { return null; }
-        for (int i = 0; i < introVideos.Length; i++)
+        if (introVideos_ItemCountRelated == null || introVideos_ItemCountRelated.Length <= 0) { return null; }
+        for (int i = 0; i < introVideos_ItemCountRelated.Length; i++)
         {
-            if (introVideos[i].itemCount == SettingsScreen.itemCountOptions) { return introVideos[i].video; }
+            if (introVideos_ItemCountRelated[i].itemCount == SettingsScreen.itemCountOptions) { return introVideos_ItemCountRelated[i].video; }
         }
         return null;
     } 
@@ -47,13 +48,15 @@ public class Gameflow_Lobby : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TV.usingPasscodeNumbers = usingPasscodeNumbers;
+        Audio.DestroyAllSounds();
         SettingsScreen.ApplyUserSettings();
         Setup();
+
         TV.OnAllItemsChecked = () => { if (lastItemScanned) { GameCompleted(); } else { videoPlayer_TV.PlayVideo(allScannedVideo); } };
         SERIAL.onMessageReceived = RFID_Scan;
         SERIAL.onMessageReceived += TV.RFID_Scan;
         SERIAL.onMessageReceived += Selfcheckout.RFID_Scan;
-        TV.usingPasscodeNumbers = usingPasscodeNumbers;
     }
 
     public void StartGame()
@@ -62,9 +65,10 @@ public class Gameflow_Lobby : MonoBehaviour
         {
             lastItemScanned = false;
             Setup(SettingsScreen.GetSettings_ItemCount());
-            videoPlayer_TV.PlayVideo(GetIntroVideo());
+            videoPlayer_TV.PlayVideo(introVideo,false,null,false, ()=> videoPlayer_TV.PlayVideo(GetIntroVideo()));
             GAME.StartGame();
             GAME.timer.OnTimerEnds = LoseGame;
+            UDP.Write(GAME.UDP_SetGameTimer + ((int)SettingsScreen.GetSettings_TimerDuration()).ToString());
             UDP.Write(GAME.UDP_GameStart);
         }
     }

@@ -13,6 +13,7 @@ public class ItemCell : MonoBehaviour
     public Image background;
     public Image unknownIcon;
     public Image icon;
+    public Text hint;
 
     public Item item { private set; get; }
     Coroutine revealCoroutine = null;
@@ -25,8 +26,11 @@ public class ItemCell : MonoBehaviour
         this.item = item;
         if (item != null)
         {
+            if (!hasBeenSetup) { icon.material = Instantiate(icon.material); }
+            icon.material.SetFloat("_Transparency", 1);
             icon.sprite = item.icon;
             hasBeenSetup = true;
+            hint.text = item.silloute_hint;
         }
         HideItem();
     }
@@ -42,7 +46,8 @@ public class ItemCell : MonoBehaviour
         revealCoroutine = this.InterpolateCoroutine(revealDuration, (n) =>
         {
             float N = n * n;
-            icon.color = Color.Lerp(initialIconColor, Color.white, N);
+            icon.material.SetFloat("_Transparency", 1-n);
+            //icon.color = Color.Lerp(initialIconColor, Color.white, N);
             background.color = Color.Lerp(initialBackgroundColor, item.backgroundColor, N);
         });
     }
@@ -51,7 +56,8 @@ public class ItemCell : MonoBehaviour
     {
         revealed = false;
         if (revealCoroutine != null) { StopCoroutine(revealCoroutine); revealCoroutine = null; }
-        icon.color = Color.black;
+       // icon.color = Color.black;
+        icon.material.SetFloat("_Transparency", 1);
         background.color = bgColorWhenHidden;
         unknownIcon.enabled = true;
     }

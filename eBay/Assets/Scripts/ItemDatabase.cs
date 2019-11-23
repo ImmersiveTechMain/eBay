@@ -28,9 +28,12 @@ public class ItemDatabase : MonoBehaviour
         {
             for (int i = 0; i < AllItems.Length; i++)
             {
-                if (AllItems[i].tagID == id)
+                for (int t = 0; t < AllItems[i].tagID.Length; t++)
                 {
-                    return AllItems[i];
+                    if (AllItems[i].tagID[t] == id)
+                    {
+                        return AllItems[i];
+                    }
                 }
             }
         }

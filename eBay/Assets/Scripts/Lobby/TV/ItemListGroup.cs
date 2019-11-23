@@ -10,6 +10,7 @@ public class ItemListGroup : MonoBehaviour
         public string title;
         public Item.Category itemsCategory;
         public Sprite icon;
+        public Sprite patern;
     }
 
     public delegate void CALLBACK();
@@ -51,7 +52,8 @@ public class ItemListGroup : MonoBehaviour
                 lists[i].gameObject.name = "[" + listSettings[i].itemsCategory.ToString() + "] List";
                 lists[i].gameObject.SetActive(true);
                 lists[i].transform.SetParent(originalItemListTV.transform.parent, false);
-                lists[i].Setup(items, listSettings[i].itemsCategory, listSettings[i].title, listSettings[i].icon, nextPackageSize);
+                int _i = i;
+                lists[i].Setup(items, listSettings[_i], nextPackageSize);
                 lists[i].OnRowCheckmarkChanged = CheckCompletion;
             }
         }
@@ -76,6 +78,7 @@ public class ItemListGroup : MonoBehaviour
         {
             for (int i = 0; i < lists.Length; i++)
             {
+                Debug.Log(i);
                 if (lists[i].category == category)
                 {
                     return lists[i];

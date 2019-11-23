@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Audio.cs" />
     <Compile Include="Assets\Scripts\GAME.cs" />
     <Compile Include="Assets\Scripts\ItemDatabase.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\Scripts\SkeetoTools.cs" />
     <Compile Include="Assets\Scripts\UDP.cs" />
     <Compile Include="Assets\Scripts\VideoPlayer.cs" />
+    <None Include="Assets\Shaders\Silloute.shader" />
     <None Include="Assets\Shaders\FlashRed.shader" />
     <None Include="Assets\Shaders\Snow.shader" />
     <Reference Include="Unity.Timeline.Editor">

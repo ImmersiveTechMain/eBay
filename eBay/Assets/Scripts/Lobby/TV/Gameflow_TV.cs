@@ -46,6 +46,7 @@ public class Gameflow_TV : MonoBehaviour
         if (item != null)
         {
             ItemList_TV list = listsGroup.GetList(item.category);
+            Debug.Log("Here ");
             if (list != null)
             {
                 list.CheckmarkItem(item, true);

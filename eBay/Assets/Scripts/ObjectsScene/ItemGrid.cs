@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemGrid : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ItemGrid : MonoBehaviour
     public ItemCell originalCell;
     public RectTransform originalRow;
     public RectTransform rowsFolder;
+    public Text title;
 
     ItemCell[] itemCells;
     RectTransform[] rows;
@@ -20,6 +22,7 @@ public class ItemGrid : MonoBehaviour
     {
         CreateRows(items);
         CreateCells(items);
+        title.text = category.ToString().ToUpper();
         hasBeenSetup = true;
     }
 
@@ -30,7 +33,7 @@ public class ItemGrid : MonoBehaviour
         originalRow.gameObject.SetActive(false);
         if (items != null && items.Length > 0)
         {
-            int totalAmount = Mathf.CeilToInt(items.Length / 2f);
+            int totalAmount = items.Length == 2 ? items.Length : Mathf.CeilToInt(items.Length / 2f);
             rows = new RectTransform[totalAmount];
             for (int i = 0; i < rows.Length; i++)
             {
@@ -52,7 +55,7 @@ public class ItemGrid : MonoBehaviour
             itemCells = new ItemCell[totalAmount];
             for (int i = 0; i < itemCells.Length; i++)
             {
-                int rowIndex = Mathf.FloorToInt(i / 2f);
+                int rowIndex = items.Length == 2 ? i : Mathf.FloorToInt(i / 2f);
                 ItemCell itemCell = Instantiate(originalCell);
                 itemCell.gameObject.SetActive(true);
                 itemCell.transform.SetParent(rows[rowIndex].transform, false);
@@ -69,10 +72,13 @@ public class ItemGrid : MonoBehaviour
         {
             for (int i = 0; i < itemCells.Length; i++)
             {
-                if (itemCells[i].item.tagID == id)
+                for (int t = 0; t < itemCells[i].item.tagID.Length; t++)
                 {
-                    itemCells[i].Reveal();
-                    return true;
+                    if (itemCells[i].item.tagID[t] == id)
+                    {
+                        itemCells[i].Reveal();
+                        return true;
+                    }
                 }
             }
         }

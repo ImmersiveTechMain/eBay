@@ -21,10 +21,15 @@ public class Gameflow : MonoBehaviour
     public ItemGrid[] itemGrids;
     public ItemGrid[] debugItemGrids;
 
+    [Header("Audio")]
+    public AudioClip MUSIC_15MIN;
+    public AudioClip MUSIC_10MIN;
+
     Item[] Items;
 
     private void Start()
     {
+        Audio.DestroyAllSounds();
         Items = ItemDatabase.AllItems.Where((item) => { return item.isOnSilluetePuzzle; }).ToArray();
         Debug.Log(Items.Length);
         UDP.onMessageReceived = UDP_COMMAND;
@@ -98,9 +103,21 @@ public class Gameflow : MonoBehaviour
 
             if (command.ToLower() == GAME.UDP_GameCompleted.ToLower()) { GameCompleted(); }
             if (command.ToLower() == GAME.UDP_GameLost.ToLower()) { LoseGame(); }
-            if (command.ToLower() == GAME.UDP_GameStart.ToLower()) { GAME.gameHasStarted = true; }
+            if (command.ToLower() == GAME.UDP_GameStart.ToLower()) { StartGame(); }
             if (command.ToLower() == GAME.UDP_GameReset.ToLower()) { GAME.ResetGame(); }
+            if (command.Length > GAME.UDP_SetGameTimer.Length && command.ToLower().Substring(0, GAME.UDP_SetGameTimer.Length) == GAME.UDP_SetGameTimer.ToLower())
+            {
+                string valueSTR = command.Substring(GAME.UDP_SetGameTimer.Length);
+                int value = (int)GAME.duration;
+                if (int.TryParse(valueSTR, out value)) { GAME.duration = value; }
+            }
         }
+    }
+
+    void StartGame()
+    {
+        GAME.StartGame();
+        Audio.PlayMusic(GAME.duration < 900 ? MUSIC_10MIN : MUSIC_15MIN);
     }
 
     public void GameCompleted()
@@ -112,6 +129,7 @@ public class Gameflow : MonoBehaviour
             {
                 for (int i = 0; i < winScreens.Length; winScreens[i++].SetActive(true)) ;
             }
+            if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
         }
     }
     void LoseGame()
@@ -123,6 +141,7 @@ public class Gameflow : MonoBehaviour
             {
                 for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(true)) ;
             }
+            if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
         }
     }
 

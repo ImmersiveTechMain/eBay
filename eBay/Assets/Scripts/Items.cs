@@ -8,7 +8,8 @@ public class Item
 {
     public string name;
     public string hint;
-    public string tagID;
+    public string silloute_hint;
+    public string[] tagID;
     public uint price;
     public Category category;
     public Sprite icon;
@@ -21,7 +22,7 @@ public class Item
     public enum Category
     {
         Electronics,
-        HomeDecor,
+        Home,
         Toys
     }
 }
