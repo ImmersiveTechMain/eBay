@@ -373,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -83}
+  m_AnchoredPosition: {x: 0, y: -82.99988}
   m_SizeDelta: {x: -10, y: -172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &23973162
@@ -3285,7 +3285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.4, y: -19.3}
+  m_AnchoredPosition: {x: -25.400024, y: -19.3}
   m_SizeDelta: {x: 197.19, y: 5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &483885515
@@ -3862,7 +3862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5ec4e91534f8a4cbae21125762b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ip: localhost
+  ip: 10.199.199.101
   hostName: 255.255.255.10
   port: 3000
   writePort: 3001
@@ -14142,11 +14142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844015898}
     m_Modifications:
-    - target: {fileID: 1499035390172437818, guid: 5583429e778665642a34211dcea2defd,
-        type: 3}
-      propertyPath: m_Name
-      value: SmallTimer
-      objectReference: {fileID: 0}
     - target: {fileID: 1499035390172437819, guid: 5583429e778665642a34211dcea2defd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14251,6 +14246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499035390172437818, guid: 5583429e778665642a34211dcea2defd,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallTimer
       objectReference: {fileID: 0}
     - target: {fileID: 1499035389426928898, guid: 5583429e778665642a34211dcea2defd,
         type: 3}

@@ -148,6 +148,7 @@ public class Gameflow : MonoBehaviour
                 for (int i = 0; i < winScreens.Length; winScreens[i++].SetActive(true)) ;
             }
             if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
+            SetIdelVideoVisibleState(true);
         }
     }
     void LoseGame()
@@ -160,6 +161,7 @@ public class Gameflow : MonoBehaviour
                 for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(true)) ;
             }
             if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
+            SetIdelVideoVisibleState(true);
         }
     }
 
