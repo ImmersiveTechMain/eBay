@@ -10,11 +10,13 @@ public class Gameflow_Lobby : MonoBehaviour
     public float gameDuration = 300;
     public float timeWindowForUserSetup = 15; // the duration of the counter after game starts for the user to select the amount of objects to use on this instance of the game
     public bool usingPasscodeNumbers = false;
+    public float videoDelayWithAnnouncementSound = 2;
 
     [Header("Components")]
     public GameObject[] winScreens;
     public GameObject[] loseScreens;
     public VideoPlayer videoPlayer_TV;
+    public VideoPlayer videoPlayer_LobbyTV;
     [Header("Gameflows")]
     public Gameflow_TV TV;
     public Gameflow_Selfcheckout Selfcheckout;
@@ -23,8 +25,15 @@ public class Gameflow_Lobby : MonoBehaviour
     public VideoClip introVideo;
     public IntroVideo[] introVideos_ItemCountRelated;
     public VideoClip allScannedVideo;
+    public VideoClip allScannedVideo_Loop;
+    public VideoClip allScannedAndFinalVideo_Loop;
     public VideoClip loseVideo;
     public VideoClip winVideo;
+    public VideoClip idle_LobbyTV_Video;
+
+    [Header("Audio")]
+    public AudioClip SFX_IncomingVideo;
+    public AudioClip SFX_error;
 
     [System.Serializable]
     public struct IntroVideo
@@ -41,8 +50,16 @@ public class Gameflow_Lobby : MonoBehaviour
             if (introVideos_ItemCountRelated[i].itemCount == SettingsScreen.itemCountOptions) { return introVideos_ItemCountRelated[i].video; }
         }
         return null;
-    } 
-    
+    }
+
+    public void PlayErrorSFX()
+    {
+        if (!GAME.gameHasEnded && GAME.gameHasStarted)
+        {
+            Audio.PlaySFX(SFX_error);
+        }
+    }
+
     bool lastItemScanned = false;
 
     // Start is called before the first frame update
@@ -52,8 +69,19 @@ public class Gameflow_Lobby : MonoBehaviour
         Audio.DestroyAllSounds();
         SettingsScreen.ApplyUserSettings();
         Setup();
+        videoPlayer_LobbyTV.PlayVideo(idle_LobbyTV_Video, true);
 
-        TV.OnAllItemsChecked = () => { if (lastItemScanned) { GameCompleted(); } else { videoPlayer_TV.PlayVideo(allScannedVideo); } };
+        TV.OnAllItemsChecked = () =>
+        {
+            if (lastItemScanned) { GameCompleted(); }
+            else
+            {
+                PlayVideo(allScannedVideo, () => this.ActionAfterFrameDelay(1, () =>
+                {
+                    if (!lastItemScanned) { videoPlayer_TV.PlayVideo(allScannedVideo_Loop, true); }
+                }));
+            }
+        };
         SERIAL.onMessageReceived = RFID_Scan;
         SERIAL.onMessageReceived += TV.RFID_Scan;
         SERIAL.onMessageReceived += Selfcheckout.RFID_Scan;
@@ -63,16 +91,18 @@ public class Gameflow_Lobby : MonoBehaviour
     {
         if (!GAME.gameHasStarted)
         {
+            videoPlayer_LobbyTV.Close();
             lastItemScanned = false;
             Setup(SettingsScreen.GetSettings_ItemCount());
-            videoPlayer_TV.PlayVideo(introVideo, false, null, false, () => this.ActionAfterFrameDelay(1, () => videoPlayer_TV.PlayVideo(GetIntroVideo())));
+            //PlayVideo(introVideo, () => this.ActionAfterFrameDelay(1, () => videoPlayer_TV.PlayVideo(GetIntroVideo())));
+            PlayVideo(GetIntroVideo());
             GAME.StartGame();
             GAME.timer.OnTimerEnds = LoseGame;
             UDP.Write(GAME.UDP_SetGameTimer + ((int)SettingsScreen.GetSettings_TimerDuration()).ToString());
             UDP.Write(GAME.UDP_GameStart);
         }
     }
-   
+
     void Setup(int itemCount = -1)
     {
         if (winScreens != null)
@@ -102,6 +132,7 @@ public class Gameflow_Lobby : MonoBehaviour
         NineItems = KeyCode.Alpha9
     }
 
+    int itemDebugRevealIndex = 0;
     void KeyboardCommands()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && videoPlayer_TV.IsPlaying)
@@ -114,6 +145,17 @@ public class Gameflow_Lobby : MonoBehaviour
             StartGame();
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+
+            Item[] items = ItemDatabase.AllItems;
+            if (itemDebugRevealIndex < items.Length)
+            {
+                SERIAL.onMessageReceived(items[itemDebugRevealIndex++].tagID[0]);
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftShift)) { ResetGame(); }
     }
 
@@ -124,14 +166,36 @@ public class Gameflow_Lobby : MonoBehaviour
             GAME.gameHasEnded = true;
             GAME.timer.Pause();
             TV.SetLastItemIncorrectOrderScreenVisibleState(false, null);
-            videoPlayer_TV.PlayVideo(winVideo, false, null, false, () =>
+            PlayVideo(winVideo, () =>
             {
                 UDP.Write(GAME.UDP_GameCompleted);
-                if (winScreens != null)
+
+                this.ActionAfterFrameDelay(1, () =>
                 {
-                    for (int i = 0; i < winScreens.Length; winScreens[i++].SetActive(true)) ;
-                }
+                    videoPlayer_TV.PlayVideo(allScannedAndFinalVideo_Loop, true);
+                    if (winScreens != null)
+                    {
+                        for (int i = 0; i < winScreens.Length; winScreens[i++].SetActive(true)) ;
+                    }
+                });
             });
+        }
+    }
+
+    public void PlayVideo(VideoClip clip, System.Action then = null)
+    {
+        Audio.PlaySFX(SFX_IncomingVideo);
+        this.ActionAfterSecondDelay(videoDelayWithAnnouncementSound, () =>
+        {
+            videoPlayer_TV.PlayVideo(clip, false, null, false, then);
+        });
+    }
+
+    public void ResetGameButton()
+    {
+        if (GAME.gameHasEnded)
+        {
+            ResetGame();
         }
     }
 
@@ -147,12 +211,16 @@ public class Gameflow_Lobby : MonoBehaviour
         {
             UDP.Write(GAME.UDP_GameLost);
             GAME.gameHasEnded = true;
-            videoPlayer_TV.PlayVideo(loseVideo, false, null, false, ()=> 
+            PlayVideo(loseVideo, () =>
             {
-                if (loseScreens != null)
+                this.ActionAfterFrameDelay(1, () =>
                 {
-                    for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(true)) ;
-                }
+                    videoPlayer_TV.PlayVideo(idle_LobbyTV_Video, true);
+                    if (loseScreens != null)
+                    {
+                        for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(true)) ;
+                    }
+                });
             });
         }
     }

@@ -16,9 +16,17 @@ public class VideoPlayer : MonoBehaviour
     public bool IsPlaying { get { return Player.isPlaying; } }
     public bool IsOpen { get { return VideoObject.activeInHierarchy; } }
     public float volume { get { return Player.GetDirectAudioVolume(0); } set { Player.SetDirectAudioVolume(0, value); } }
+    public bool createCloneOfTexture = false;
+    bool cloneCreated = false;
 
     private void Awake()
     {
+        if (createCloneOfTexture && !cloneCreated)
+        {
+            RawImage.texture = Instantiate(RawImage.texture);
+            Player.targetTexture = RawImage.texture as RenderTexture;
+            cloneCreated = true;
+        }
         Player.loopPointReached += (player) => { CallTheCallback(); if (!player.isLooping) { Close(); } };
         Close();
     }

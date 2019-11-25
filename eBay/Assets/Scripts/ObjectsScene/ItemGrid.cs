@@ -18,6 +18,9 @@ public class ItemGrid : MonoBehaviour
 
     public bool hasBeenSetup { private set; get; }
 
+    public delegate void CALLBACK();
+    public CALLBACK onItemRevealed = delegate () { };
+
     public void Setup(Item[] items, Item.Category category)
     {
         CreateRows(items);
@@ -66,6 +69,22 @@ public class ItemGrid : MonoBehaviour
         }
     }
 
+    public bool CheckCompletion()
+    {
+        bool allCompleted = true;
+        if (itemCells != null)
+        {
+            for (int i = 0; i < itemCells.Length; i++)
+            {
+                for (int t = 0; t < itemCells[i].item.tagID.Length; t++)
+                {
+                    allCompleted &= itemCells[i].revealed;
+                }
+            }
+        }
+        return allCompleted;
+    }
+
     public bool Reveal(string id)
     {
         if (itemCells != null)
@@ -76,7 +95,7 @@ public class ItemGrid : MonoBehaviour
                 {
                     if (itemCells[i].item.tagID[t] == id)
                     {
-                        itemCells[i].Reveal();
+                        itemCells[i].Reveal(()=> { onItemRevealed(); });                        
                         return true;
                     }
                 }

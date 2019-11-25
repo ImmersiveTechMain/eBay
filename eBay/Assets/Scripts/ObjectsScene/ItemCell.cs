@@ -35,7 +35,7 @@ public class ItemCell : MonoBehaviour
         HideItem();
     }
 
-    public void Reveal()
+    public void Reveal(System.Action then = null)
     {
         if (item == null || revealed) { return; }
         if (revealCoroutine != null) { StopCoroutine(revealCoroutine); revealCoroutine = null; }
@@ -49,7 +49,7 @@ public class ItemCell : MonoBehaviour
             icon.material.SetFloat("_Transparency", 1-n);
             //icon.color = Color.Lerp(initialIconColor, Color.white, N);
             background.color = Color.Lerp(initialBackgroundColor, item.backgroundColor, N);
-        });
+        },()=> { if (then != null) { then(); } });
     }
 
     public void HideItem()

@@ -28,6 +28,9 @@ public class Gameflow : MonoBehaviour
     [Header("Videos")]
     public VideoPlayer[] videoPlayers_idles;
     public UnityEngine.Video.VideoClip idleVideo;
+    public UnityEngine.Video.VideoClip itemsFound_PerCategoryVideo;
+    public UnityEngine.Video.VideoClip winVideo;
+    public UnityEngine.Video.VideoClip lostVideo;
 
     Item[] Items;
 
@@ -39,17 +42,17 @@ public class Gameflow : MonoBehaviour
         UDP.onMessageReceived = UDP_COMMAND;
         debugCanvas.gameObject.SetActive(usingDebugCanvas);
         if (canvases != null && canvases.Length > 0 && canvases[0] != null) { canvases[0].gameObject.SetActive(!usingDebugCanvas); }
-        SetIdelVideoVisibleState(true);
+        SetAllVideoState(true, idleVideo);
         Setup();
     }
 
-    public void SetIdelVideoVisibleState(bool isVisible)
+    public void SetAllVideoState(bool isVisible, UnityEngine.Video.VideoClip clip)
     {
         if (videoPlayers_idles != null && videoPlayers_idles.Length > 0)
         {
             for (int i = 0; i < videoPlayers_idles.Length; i++)
             {
-                if (isVisible && !videoPlayers_idles[i].IsPlaying) { videoPlayers_idles[i].PlayVideo(idleVideo, true, null); }
+                if (isVisible) { if (videoPlayers_idles[i].IsPlaying) { videoPlayers_idles[i].Close(); }  videoPlayers_idles[i].PlayVideo(clip, true, null); }
                 else if (!isVisible) { videoPlayers_idles[i].Close(); }
             }
         }
@@ -77,6 +80,7 @@ public class Gameflow : MonoBehaviour
 
             for (int i = 0; i < grids.Length; i++)
             {
+                int _i = i;
                 Item.Category category = (Item.Category)i;
                 Item[] possibleItems = Items.Where((item) => { return item.category == category; }).ToArray();
                 int itemCountForThisGrid = itemsPerGrid + (remaining-- > 0 ? 1 : 0);
@@ -92,7 +96,17 @@ public class Gameflow : MonoBehaviour
                 }
 
                 grids[i].Setup(nextItemPack, category);
-
+                grids[i].onItemRevealed = () =>
+                {
+                    if (grids[_i].CheckCompletion() && videoPlayers_idles != null && _i < videoPlayers_idles.Length)
+                    {
+                        if (videoPlayers_idles[_i].IsPlaying) { videoPlayers_idles[_i].Close(); }
+                        this.ActionAfterFrameDelay(1, () => 
+                        {
+                            videoPlayers_idles[_i].PlayVideo(itemsFound_PerCategoryVideo, true);
+                        });
+                    }
+                };
             }
         }
     }
@@ -130,11 +144,11 @@ public class Gameflow : MonoBehaviour
             }
         }
     }
-
+    //
     void StartGame()
     {
         GAME.StartGame();
-        SetIdelVideoVisibleState(false);
+        SetAllVideoState(false, null);
         Audio.PlayMusic(GAME.duration < 900 ? MUSIC_10MIN : MUSIC_15MIN);
     }
 
@@ -148,7 +162,7 @@ public class Gameflow : MonoBehaviour
                 for (int i = 0; i < winScreens.Length; winScreens[i++].SetActive(true)) ;
             }
             if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
-            SetIdelVideoVisibleState(true);
+            SetAllVideoState(true, winVideo);
         }
     }
     void LoseGame()
@@ -161,7 +175,7 @@ public class Gameflow : MonoBehaviour
                 for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(true)) ;
             }
             if (Audio.MusicChannel != null) { Audio.MusicChannel.Stop(1); }
-            SetIdelVideoVisibleState(true);
+            SetAllVideoState(true, lostVideo);
         }
     }
 

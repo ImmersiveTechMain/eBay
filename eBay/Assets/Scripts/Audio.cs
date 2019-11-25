@@ -79,11 +79,11 @@ public class Audio : MonoBehaviour
 
         public void Stop(float fade = 0, System.Action then = null)
         {
-            if (fade > 0)
+            if (fade > 0 && Instance != null)
             {
                 float startingVolume = volume;
                 if (stopCoroutine != null) { Instance.StopCoroutine(stopCoroutine); stopCoroutine = null; }
-                stopCoroutine = Instance.InterpolateCoroutine(fade, (n) => { SetVolume(startingVolume * (1 - n)); }, () => { source.Stop(); stopCoroutine = null; if (then != null) { then(); } });
+                stopCoroutine = Instance.InterpolateCoroutine(fade, (n) => { SetVolume(startingVolume * (1 - n)); }, () => { if (source != null) { source.Stop(); } stopCoroutine = null; if (then != null) { then(); } });
             }
             else
             {
@@ -164,7 +164,7 @@ public class Audio : MonoBehaviour
             AudioChannel[] SFX_Channels_Array = SFXChannels.ToArray();
             for (int i = 0; i < SFX_Channels_Array.Length; i++)
             {
-                if (SFX_Channels_Array[i] != null)
+                if (SFX_Channels_Array[i] != null && SFX_Channels_Array[i].source != null && SFX_Channels_Array[i].source.gameObject != null)
                 {
                     Destroy(SFX_Channels_Array[i].source.gameObject);
                 }
@@ -244,9 +244,9 @@ public class Audio : MonoBehaviour
 
     public static void DestroyAllSounds()
     {
-        if (MusicChannelsFolder != null) { Destroy(MusicChannelsFolder.gameObject); MusicChannelsFolder = null; }
+        if (MusicChannelsFolder != null) { Destroy(MusicChannelsFolder.gameObject); MusicChannelsFolder = null; MusicChannel = null; }
         if (SFXChannelsFolder != null) { DestoyAllSFXChannels(); Destroy(SFXChannelsFolder.gameObject);  }
-        if (SpecialChannelsFolder != null) { Destroy(SpecialChannelsFolder.gameObject); SpecialChannel = null; }
+        if (SpecialChannelsFolder != null) { Destroy(SpecialChannelsFolder.gameObject); SpecialChannel = null; SpecialChannel = null; }
         if (Instance != null)
         {
             Instance.CreateFolders();

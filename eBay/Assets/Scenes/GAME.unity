@@ -1078,6 +1078,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -33.898438
       objectReference: {fileID: 0}
+    - target: {fileID: 3133578375546404979, guid: 5b1c2a8027c96e3478e52334bebcc97b,
+        type: 3}
+      propertyPath: createCloneOfTexture
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b1c2a8027c96e3478e52334bebcc97b, type: 3}
 --- !u!114 &570048132 stripped
@@ -1654,6 +1659,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -33.898438
       objectReference: {fileID: 0}
+    - target: {fileID: 3133578375546404979, guid: 5b1c2a8027c96e3478e52334bebcc97b,
+        type: 3}
+      propertyPath: createCloneOfTexture
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b1c2a8027c96e3478e52334bebcc97b, type: 3}
 --- !u!114 &761508299 stripped
@@ -1706,6 +1716,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 702.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &803560819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803560821}
+  - component: {fileID: 803560820}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &803560820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803560819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48895905205293d45913adafff250ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicVolume: 1
+  SFXVolume: 1
+--- !u!4 &803560821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803560819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 176.78363, y: 974.2715, z: -1658.4336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &906431003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2097500440933630285, guid: 5b1c2a8027c96e3478e52334bebcc97b,
@@ -2726,13 +2781,17 @@ MonoBehaviour:
   - {fileID: 1690956129}
   - {fileID: 1437361283}
   - {fileID: 425562019}
-  MUSIC_15MIN: {fileID: 8300000, guid: 9596d12678b24b3408a7ee3532cfb337, type: 3}
-  MUSIC_10MIN: {fileID: 8300000, guid: 222c2d100b4a01b4a896249639cb467a, type: 3}
+  MUSIC_15MIN: {fileID: 8300000, guid: 58bf4293240079447962de42d8d1f4d2, type: 3}
+  MUSIC_10MIN: {fileID: 8300000, guid: fdbb1202da9ff2c47aa25266f0e4ba20, type: 3}
   videoPlayers_idles:
   - {fileID: 2097500440727327772}
   - {fileID: 761508299}
   - {fileID: 570048132}
-  idleVideo: {fileID: 32900000, guid: 32a6cf9a32f135b4f8e106c25af58201, type: 3}
+  idleVideo: {fileID: 32900000, guid: 754d479ca755d0448aa421472983b710, type: 3}
+  itemsFound_PerCategoryVideo: {fileID: 32900000, guid: 4e195ff88373bf54eba13e29a63f1047,
+    type: 3}
+  winVideo: {fileID: 32900000, guid: a747a94cac0be9147a8620fa42f5c395, type: 3}
+  lostVideo: {fileID: 32900000, guid: b0597c0eb6ce7734aae8cfce7229ac38, type: 3}
 --- !u!4 &1590087959
 Transform:
   m_ObjectHideFlags: 0
@@ -4235,6 +4294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -33.898438
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133578375546404979, guid: 5b1c2a8027c96e3478e52334bebcc97b,
+        type: 3}
+      propertyPath: createCloneOfTexture
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b1c2a8027c96e3478e52334bebcc97b, type: 3}
