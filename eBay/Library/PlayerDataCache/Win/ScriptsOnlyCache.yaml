@@ -2,12 +2,21 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Audio
-    - Gameflow
-    - ItemCell
+    - Bill
+    - Bill_ItemRow
+    - Gameflow_Lobby
+    - Gameflow_Selfcheckout
+    - Gameflow_TV
     - ItemDatabase
-    - ItemGrid
+    - ItemListGroup
+    - ItemList_TV
+    - ItemList_TV_Row
     - MultiDisplaySetup
+    - Passcode
+    - Passcode_Digit
     - Rotate
+    - SERIAL
+    - SettingsScreen
     - TimerScreen
     - UDP
     - VideoPlayer
@@ -17,16 +26,22 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
+    - UnityEngine.UI.ToggleGroup
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/GAME.unity:
+    Assets/Scenes/Touch.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -45,14 +60,16 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 84
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 9682}
+    - Class: 114
       Script: {instanceID: 9684}
+    - Class: 114
+      Script: {instanceID: 9704}
     - Class: 114
       Script: {instanceID: 9750}
     - Class: 114
@@ -64,15 +81,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9888}
     - Class: 114
+      Script: {instanceID: 9974}
+    - Class: 114
+      Script: {instanceID: 9988}
+    - Class: 114
       Script: {instanceID: 10006}
     - Class: 114
-      Script: {instanceID: 10130}
+      Script: {instanceID: 10064}
+    - Class: 114
+      Script: {instanceID: 10184}
     - Class: 114
       Script: {instanceID: 10274}
     - Class: 114
       Script: {instanceID: 10286}
     - Class: 114
-      Script: {instanceID: 10466}
+      Script: {instanceID: 10400}
+    - Class: 114
+      Script: {instanceID: 10426}
+    - Class: 114
+      Script: {instanceID: 10442}
+    - Class: 114
+      Script: {instanceID: 10450}
+    - Class: 114
+      Script: {instanceID: 10526}
+    - Class: 114
+      Script: {instanceID: 10632}
     - Class: 114
       Script: {instanceID: 10652}
     - Class: 114
@@ -82,15 +115,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10844}
     - Class: 114
+      Script: {instanceID: 10930}
+    - Class: 114
       Script: {instanceID: 10940}
     - Class: 114
       Script: {instanceID: 11100}
     - Class: 114
+      Script: {instanceID: 11330}
+    - Class: 114
+      Script: {instanceID: 11382}
+    - Class: 114
       Script: {instanceID: 11404}
+    - Class: 114
+      Script: {instanceID: 11458}
     - Class: 114
       Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11506}
+      Script: {instanceID: 11474}
+    - Class: 114
+      Script: {instanceID: 11510}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -104,8 +147,6 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
-      Script: {instanceID: 0}
-    - Class: 258
       Script: {instanceID: 0}
     - Class: 328
       Script: {instanceID: 0}
@@ -294,7 +335,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 694ddd22d99947d539312127be51d3b6
+      Hash: 1447ad54bba9d2ff7785a011401895b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gameflow
@@ -664,7 +705,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 94fbc12d8127c5bd2ab02fc45baa467d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasAutoscroller
   platform: 5
   scenePathNames:
-  - Assets/Scenes/GAME.unity
-  playerPath: C:/Users/Skeet/Desktop/eBayBuilds/Reveal/eBay_Reveal.exe
+  - Assets/Scenes/Touch.unity
+  playerPath: C:/Users/Skeet/Desktop/eBayBuilds/Reveal_OneScreen/eBay_Reveal_OneScreen.exe

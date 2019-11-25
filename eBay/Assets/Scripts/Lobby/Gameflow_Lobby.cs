@@ -70,6 +70,7 @@ public class Gameflow_Lobby : MonoBehaviour
         SettingsScreen.ApplyUserSettings();
         Setup();
         videoPlayer_LobbyTV.PlayVideo(idle_LobbyTV_Video, true);
+        videoPlayer_TV.PlayVideo(idle_LobbyTV_Video, true);
 
         TV.OnAllItemsChecked = () =>
         {
@@ -156,7 +157,7 @@ public class Gameflow_Lobby : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftShift)) { ResetGame(); }
+        if (Input.GetKeyDown(KeyCode.R) ) { ResetGame(); }
     }
 
     public void GameCompleted()
@@ -185,9 +186,10 @@ public class Gameflow_Lobby : MonoBehaviour
     public void PlayVideo(VideoClip clip, System.Action then = null)
     {
         Audio.PlaySFX(SFX_IncomingVideo);
+        UDP.Write(GAME.UDP_ReduceMusicVolume);
         this.ActionAfterSecondDelay(videoDelayWithAnnouncementSound, () =>
         {
-            videoPlayer_TV.PlayVideo(clip, false, null, false, then);
+            videoPlayer_TV.PlayVideo(clip, false, null, false, ()=> { UDP.Write(GAME.UDP_IncreaseMusicVolume); if (then != null) { then(); } });
         });
     }
 

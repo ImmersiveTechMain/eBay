@@ -251,6 +251,9 @@ public class Audio : MonoBehaviour
         {
             Instance.CreateFolders();
         }
+        OnMusicMasterVolumeModified = delegate (float v) { };
+        OnMasterVolumeModified = delegate (float v) { };
+        OnSFXMasterVolumeModified = delegate (float v) { };
     }
 
     public void CreateFolders()

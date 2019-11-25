@@ -13,6 +13,8 @@ public static class GAME
     public static string UDP_GameLost = "GAME_LOST";
     public static string UDP_GameStart = "GAME_START";
     public static string UDP_GameReset = "GAME_RESET";
+    public static string UDP_ReduceMusicVolume = "SET_MUSIC_VOLUME_LOW";
+    public static string UDP_IncreaseMusicVolume = "SET_MUSIC_VOLUME_HIGH";
     public static string UDP_SetGameTimer = "SET_GAME_TIMER_"; // SET_GAME_TIMER_X  where X is seconds
 
     public static Timer timer;
