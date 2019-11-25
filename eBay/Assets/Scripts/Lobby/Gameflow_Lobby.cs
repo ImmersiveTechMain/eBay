@@ -74,6 +74,8 @@ public class Gameflow_Lobby : MonoBehaviour
 
         TV.OnAllItemsChecked = () =>
         {
+            Selfcheckout.bill.totalSavingsRow.gameObject.SetActive(true);
+            Selfcheckout.bill.Refresh();
             if (lastItemScanned) { GameCompleted(); }
             else
             {
@@ -114,6 +116,7 @@ public class Gameflow_Lobby : MonoBehaviour
         {
             for (int i = 0; i < loseScreens.Length; loseScreens[i++].SetActive(false)) ;
         }
+        
         itemCount = itemCount < 0 ? ItemDatabase.Count : Mathf.Min(itemCount, ItemDatabase.Count);
         UDP.Write("SETUP_OBJECTCOUNT_" + itemCount);
         TV.Setup(passcode, itemCount);

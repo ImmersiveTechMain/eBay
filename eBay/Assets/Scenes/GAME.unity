@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3019ba3e933d694ea78b63a479294cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usingDebugCanvas: 1
+  usingDebugCanvas: 0
   maxObjectsCount: 12
   UDP_ToReceive_RFID: RFID_
   UDP_ToReceive_SetMaxObjectCount: SETUP_OBJECTCOUNT_

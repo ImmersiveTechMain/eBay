@@ -10,7 +10,7 @@ public class Item
     public string hint;
     public string silloute_hint;
     public string[] tagID;
-    public uint price;
+    public float price;
     public Category category;
     public Sprite icon;
     public Color backgroundColor = Color.gray;

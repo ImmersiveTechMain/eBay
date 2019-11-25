@@ -12,7 +12,7 @@ public class Bill_ItemRow : MonoBehaviour
 
     public Item item { private set; get; }
 
-    public uint GetTotalPrice()
+    public float GetTotalPrice()
     {
         if (item != null)
         {
@@ -30,6 +30,9 @@ public class Bill_ItemRow : MonoBehaviour
     public void Refresh()
     {
         title.text = "x" + amount.ToString() + " " + item.name;
-        price.text = "$" + GetTotalPrice() + ".00";
+        float price = (Mathf.RoundToInt(GetTotalPrice() * 100) / 100f);
+        string _price = price.ToString("#.00");
+
+        this.price.text = "$" + _price;
     }
 }

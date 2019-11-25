@@ -10,6 +10,8 @@ public class Bill : MonoBehaviour
 
     [Header("Components")]
     public Bill_ItemRow originalItemRow;
+    public Transform totalSavingsRow;
+
     [Header("Header")]
     public Transform headerRow;
     [Header("Balance Due")]
@@ -20,7 +22,7 @@ public class Bill : MonoBehaviour
 
     public void Refresh()
     {
-        uint total = 0;
+        float total = 0;
         if (itemRows != null && itemRows.Count > 0)
         {
             for (int i = 0; i < itemRows.Count; i++)
@@ -29,14 +31,16 @@ public class Bill : MonoBehaviour
                 total += itemRows[i].GetTotalPrice();
             }
         }
+        if (totalSavingsRow.gameObject.activeInHierarchy) { totalSavingsRow.SetAsLastSibling(); }
         balanceDueRow.gameObject.SetActive(displayBalanceDue);
         balanceDueRow.transform.SetAsLastSibling();
-        balanceDue_valueText.text = "$" + total + ".00";
+        balanceDue_valueText.text = "$" + total;
         headerRow.transform.SetAsFirstSibling();
     }
 
     public void Clear()
     {
+        totalSavingsRow.gameObject.SetActive(false);
         originalItemRow.gameObject.SetActive(false);
         if (itemRows != null && itemRows.Count > 0)
         {

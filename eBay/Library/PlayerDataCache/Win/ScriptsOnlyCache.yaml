@@ -2,21 +2,13 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Audio
-    - Bill
-    - Bill_ItemRow
-    - Gameflow_Lobby
-    - Gameflow_Selfcheckout
-    - Gameflow_TV
+    - CanvasAutoscroller
+    - Gameflow
+    - ItemCell
     - ItemDatabase
-    - ItemListGroup
-    - ItemList_TV
-    - ItemList_TV_Row
+    - ItemGrid
     - MultiDisplaySetup
-    - Passcode
-    - Passcode_Digit
     - Rotate
-    - SERIAL
-    - SettingsScreen
     - TimerScreen
     - UDP
     - VideoPlayer
@@ -26,22 +18,16 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
-    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.LayoutElement
-    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
-    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Text
-    - UnityEngine.UI.Toggle
-    - UnityEngine.UI.ToggleGroup
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/Touch.unity:
+    Assets/Scenes/GAME.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -60,16 +46,14 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 84
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9682}
-    - Class: 114
       Script: {instanceID: 9684}
-    - Class: 114
-      Script: {instanceID: 9704}
     - Class: 114
       Script: {instanceID: 9750}
     - Class: 114
@@ -81,59 +65,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9888}
     - Class: 114
-      Script: {instanceID: 9974}
-    - Class: 114
-      Script: {instanceID: 9988}
-    - Class: 114
       Script: {instanceID: 10006}
     - Class: 114
-      Script: {instanceID: 10064}
-    - Class: 114
-      Script: {instanceID: 10184}
+      Script: {instanceID: 10130}
     - Class: 114
       Script: {instanceID: 10274}
     - Class: 114
-      Script: {instanceID: 10286}
+      Script: {instanceID: 10282}
     - Class: 114
-      Script: {instanceID: 10400}
+      Script: {instanceID: 10288}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10468}
     - Class: 114
-      Script: {instanceID: 10442}
+      Script: {instanceID: 10654}
     - Class: 114
-      Script: {instanceID: 10450}
+      Script: {instanceID: 10720}
     - Class: 114
-      Script: {instanceID: 10526}
+      Script: {instanceID: 10802}
     - Class: 114
-      Script: {instanceID: 10632}
+      Script: {instanceID: 10846}
     - Class: 114
-      Script: {instanceID: 10652}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 10718}
+      Script: {instanceID: 11102}
     - Class: 114
-      Script: {instanceID: 10800}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 10844}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 10930}
-    - Class: 114
-      Script: {instanceID: 10940}
-    - Class: 114
-      Script: {instanceID: 11100}
-    - Class: 114
-      Script: {instanceID: 11330}
-    - Class: 114
-      Script: {instanceID: 11382}
-    - Class: 114
-      Script: {instanceID: 11404}
-    - Class: 114
-      Script: {instanceID: 11458}
-    - Class: 114
-      Script: {instanceID: 11460}
-    - Class: 114
-      Script: {instanceID: 11474}
-    - Class: 114
-      Script: {instanceID: 11510}
+      Script: {instanceID: 11508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -147,6 +107,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
     - Class: 328
       Script: {instanceID: 0}
@@ -251,7 +213,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: ef5fc9dd7228c035ccf9328e9c5db9c9
+      Hash: 6fc682a41b706e943d7affb7fa07e97f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ItemDatabase
@@ -311,7 +273,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: bf8c187f8dd10f1309bb8bbfa77813b2
+      Hash: a5fac276f7f5a359f9b6d84e139c2e77
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bill
@@ -369,6 +331,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 94fbc12d8127c5bd2ab02fc45baa467d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CanvasAutoscroller
   - hash:
       serializedVersion: 2
       Hash: e15fc18fcb1c8553e766d8e875685c31
@@ -705,13 +673,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 94fbc12d8127c5bd2ab02fc45baa467d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CanvasAutoscroller
   platform: 5
   scenePathNames:
-  - Assets/Scenes/Touch.unity
-  playerPath: C:/Users/Skeet/Desktop/eBayBuilds/Reveal_OneScreen/eBay_Reveal_OneScreen.exe
+  - Assets/Scenes/GAME.unity
+  playerPath: C:/Users/Skeet/Desktop/eBayBuilds/Reveal/eBay_Reveal_V2.exe

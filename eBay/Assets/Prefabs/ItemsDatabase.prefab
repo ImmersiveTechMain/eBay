@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - name: 2019 Lenovo
+  - name: Lenovo Chromebook
     hint: "This book isn\u2019t a book at all, it\u2019s a lot more versatile"
     silloute_hint: Folds in more ways than you can imagine
     tagID:
@@ -52,7 +52,7 @@ MonoBehaviour:
     - 0A353930303435383832370D
     - 0A353930303434353230440D
     - 0A353930303433334338410D
-    price: 50
+    price: 158.2
     category: 0
     icon: {fileID: 21300000, guid: f8fc3e7edc048194d85c26e8351de3ed, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -68,7 +68,7 @@ MonoBehaviour:
     - 0A353930303435323138380D
     - 0A353930303435344334360D
     - 0A353930303435333631340D
-    price: 80
+    price: 22.63
     category: 2
     icon: {fileID: 21300000, guid: 60670112774336d4c94a7eb8ef91555c, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -84,7 +84,7 @@ MonoBehaviour:
     - 0A353830303541313337420D
     - 0A353930303435323938420D
     - 0A353930303435343038430D
-    price: 8
+    price: 51.66
     category: 1
     icon: {fileID: 21300000, guid: dba4b4914adab7642a5d71ecdaa22f09, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -100,7 +100,7 @@ MonoBehaviour:
     - 0A353930303435343436410D
     - 0A353930303435333844320D
     - 0A353930303435343644310D
-    price: 1
+    price: 92
     category: 1
     icon: {fileID: 21300000, guid: 6881f3f0eac671b4ab960619b4748d49, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -116,7 +116,7 @@ MonoBehaviour:
     - 0A353930303435383241330D
     - 0A353930303434304442340D
     - 0A353830303541304346340D
-    price: 3
+    price: 58.63
     category: 0
     icon: {fileID: 21300000, guid: 366a38301d77b154ca9ce2c4995929d4, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -132,7 +132,7 @@ MonoBehaviour:
     - 0A353630303845413139320D
     - 0A353730304331453132410D
     - 0A353930303435334335340D
-    price: 8
+    price: 23.66
     category: 2
     icon: {fileID: 21300000, guid: 474cb0d1caae2e742993239d1e4c2062, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -140,7 +140,7 @@ MonoBehaviour:
     isListedOnTV: 1
     appearsOnCheckout: 1
     isKey: 0
-  - name: KRUPS COFFEE GRINDER
+  - name: Hamilton Beach Coffee Grinder
     hint: Transform beans into something to give you the boost you might need in the
       morning
     silloute_hint: Grind it up, but not on the beach!
@@ -149,7 +149,7 @@ MonoBehaviour:
     - 0A353930303435343532410D
     - 0A353930303432433545300D
     - 0A353930303433323032320D
-    price: 1200
+    price: 25.9
     category: 1
     icon: {fileID: 21300000, guid: f64596a720329594db859694a7148c7b, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -165,7 +165,7 @@ MonoBehaviour:
     - 0A353930303432433830300D
     - 0A353930303435323945460D
     - 0A353930303435333841450D
-    price: 11
+    price: 42.22
     category: 2
     icon: {fileID: 21300000, guid: 524734b885691854facd8325287c614d, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -181,7 +181,7 @@ MonoBehaviour:
     - 0A353830303541343744440D
     - 0A353930303434333730450D
     - 0A353930303432433643350D
-    price: 55
+    price: 145.66
     category: 0
     icon: {fileID: 21300000, guid: 49f6aadec6efc184eb3a5fc7fec9efb3, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -189,7 +189,7 @@ MonoBehaviour:
     isListedOnTV: 1
     appearsOnCheckout: 1
     isKey: 0
-  - name: Oster BPCT02-BA0-000
+  - name: Ninja Professional Countertop Blender
     hint: Staring at this at work may cause dizziness
     silloute_hint: Fits 6 cups
     tagID:
@@ -197,7 +197,7 @@ MonoBehaviour:
     - 0A353930303435314332340D
     - 0A353630303845444630340D
     - 0A353930303435353030330D
-    price: 6
+    price: 56.35
     category: 1
     icon: {fileID: 21300000, guid: cc0f16e01f416014ea46e6c3e493b01c, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -213,7 +213,7 @@ MonoBehaviour:
     - 0A353630303845433739360D
     - 0A353930303435364638390D
     - 0A353930303435374535310D
-    price: 90
+    price: 69.5
     category: 0
     icon: {fileID: 21300000, guid: a3a78c0bc3afed341ad7269f1ab0a13a, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -229,7 +229,7 @@ MonoBehaviour:
     - 0A353930303435323436340D
     - 0A353930303435383139370D
     - 0A344630303131434632380D
-    price: 22
+    price: 56.12
     category: 2
     icon: {fileID: 21300000, guid: e469e93df76c9a74d9bbfeb2aeeb6b4d, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
@@ -237,7 +237,7 @@ MonoBehaviour:
     isListedOnTV: 1
     appearsOnCheckout: 1
     isKey: 0
-  - name: Breville BNV220CRO1BUC1
+  - name: KEURIG Coffee Machine
     hint: 
     silloute_hint: 
     tagID:
@@ -245,7 +245,7 @@ MonoBehaviour:
     - 0A353930303435324144430D
     - 0A353930303434343631300D
     - 0A353930303432453843350D
-    price: 80
+    price: 0
     category: 0
     icon: {fileID: 21300000, guid: f3e690b0d4e706e45aa0d1724b5c3811, type: 3}
     backgroundColor: {r: 0.015686275, g: 0.47058827, b: 0.20784315, a: 1}
